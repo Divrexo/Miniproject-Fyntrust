@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FynTrust - Sign In</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #141414;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signin-container {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .signin-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .signin-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signin-container input[type="email"],
+        .signin-container input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        .signin-container input[type="email"]:focus,
+        .signin-container input[type="password"]:focus {
+            outline: none;
+            border: 2px solid #4CAF50;
+        }
+
+        .signin-container .signin-button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .signin-container .signin-button:hover {
+            background-color: #45a049;
+        }
+
+        .signin-container .options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .signin-container .options a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .signin-container .options a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signin-container">
+        <h2>Sign In to FynTrust</h2>
+        <form action="#" method="post">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="signin-button">Sign In</button>
+        </form>
+        <div class="options">
+            <a href="#">Forgot Password?</a>
+            <a href="#">Create an Account</a>
+        </div>
+    </div>
+</body>
+
+</html>

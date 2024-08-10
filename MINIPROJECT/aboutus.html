@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FynTrust</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            background-color: #141414;
+            color: white;
+        }
+
+        header {
+            background-color: #000;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #4CAF50;
+            left: 0;
+            bottom: -5px;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .about-section {
+            padding: 50px 20px;
+            background-color: #222;
+            text-align: center;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .about-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .team-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #4CAF50;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .team-member {
+            background-color: #333;
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+
+        .team-member h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .team-member p {
+            margin: 0;
+            color: #bbb;
+        }
+
+        footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FynTrust</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-section">
+        <h1>About FynTrust</h1>
+        <div class="about-content">
+            <p>FynTrust was founded with a mission to simplify personal finance management for everyone. Our platform is designed to provide users with the tools they need to manage their taxes, investments, and expenses all in one place. With a focus on user-friendly interfaces and robust features, FynTrust aims to empower individuals to take control of their financial future.</p>
+            <p>At FynTrust, we believe that financial management should be accessible to everyone. Whether you’re a seasoned investor or just starting out, our tools are designed to cater to your needs. Our commitment to innovation, security, and customer satisfaction drives everything we do.</p>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2>Meet the Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <h3>Smeet Hendre</h3>
+                <p>Founder & CEO</p>
+                <p>Smeet has over 15 years of experience in finance and technology. His vision is to make personal finance management simple and effective for everyone.</p>
+            </div>
+            <div class="team-member">
+                <h3>Manav Harish</h3>
+                <p>Chief Technology Officer</p>
+                <p>Manav leads the technology team at FynTrust, ensuring our platform is secure, scalable, and easy to use.</p>
+            </div>
+            <div class="team-member">
+                <h3>Mahesh</h3>
+                <p>Chief Financial Officer</p>
+                <p>With a background in financial planning and analysis, Mahesh oversees the financial operations at FynTrust.</p>
+            </div>
+            <div class="team-member">
+                <h3>Ayush Singh</h3>
+                <p>Head of Customer Support</p>
+                <p>Ayush ensures that our users receive top-notch support, helping them make the most of our platform.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FynTrust. All rights reserved.</p>
+        <p><a href="index.html#contact">Contact Us</a></p>
+    </footer>
+</body>
+</html>
