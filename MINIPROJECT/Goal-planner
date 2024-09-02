@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FynTrust - Car EMI Goal Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('finance-background.png');
+            background-size: cover;
+            background-position: center;
+            color: #00FF00;
+            animation: backgroundMove 30s infinite alternate ease-in-out;
+        }
+
+        @keyframes backgroundMove {
+            0% {
+                background-size: 100%;
+                background-position: center;
+            }
+            50% {
+                background-size: 110%;
+                background-position: center;
+            }
+            100% {
+                background-size: 100%;
+                background-position: center;
+            }
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        h1 {
+            color: #00FF00;
+            margin-bottom: 20px;
+            font-size: 24px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #00FF00;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .options, .custom-input {
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .options button {
+            background-color: #111111;
+            color: #00FF00;
+            padding: 10px 15px;
+            border: 1px solid #00FF00;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .options button:hover {
+            background-color: #33FF33;
+        }
+
+        .custom-input input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #00FF00;
+            border-radius: 5px;
+            background-color: #111111;
+            color: #00FF00;
+        }
+
+        button.next-button {
+            background-color: #00FF00;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        button.next-button:hover {
+            background-color: #33FF33;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #00FF00;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>FynTrust - Car EMI Goal Planner</h1>
+        <div id="step1" class="step">
+            <div class="question">What is your monthly income?</div>
+            <div class="options">
+                <button onclick="selectOption('income', 30000, 'step1', 'step2')">₹30,000 - ₹50,000</button>
+                <button onclick="selectOption('income', 50001, 'step1', 'step2')">₹50,001 - ₹70,000</button>
+                <button onclick="selectOption('income', 70001, 'step1', 'step2')">₹70,001 - ₹100,000</button>
+            </div>
+            <div class="custom-input">
+                <input type="number" id="income-custom" placeholder="Custom Income">
+                <button class="next-button" onclick="selectCustom('income', 'income-custom', 'step1', 'step2')">Next</button>
+            </div>
+        </div>
+
+        <div id="step2" class="step hidden">
+            <div class="question">How much can you save each month?</div>
+            <div class="options">
+                <button onclick="selectOption('savings', 10000, 'step2', 'step3')">₹10,000 - ₹20,000</button>
+                <button onclick="selectOption('savings', 20001, 'step2', 'step3')">₹20,001 - ₹30,000</button>
+                <button onclick="selectOption('savings', 30001, 'step2', 'step3')">₹30,001 - ₹50,000</button>
+            </div>
+            <div class="custom-input">
+                <input type="number" id="savings-custom" placeholder="Custom Savings">
+                <button class="next-button" onclick="selectCustom('savings', 'savings-custom', 'step2', 'step3')">Next</button>
+            </div>
+        </div>
+
+        <div id="step3" class="step hidden">
+            <div class="question">What is your desired car EMI?</div>
+            <div class="options">
+                <button onclick="selectOption('emi', 5000, 'step3', 'result-step')">₹5,000 - ₹10,000</button>
+                <button onclick="selectOption('emi', 10001, 'step3', 'result-step')">₹10,001 - ₹15,000</button>
+                <button onclick="selectOption('emi', 15001, 'step3', 'result-step')">₹15,001 - ₹20,000</button>
+            </div>
+            <div class="custom-input">
+                <input type="number" id="emi-custom" placeholder="Custom EMI">
+                <button class="next-button" onclick="selectCustom('emi', 'emi-custom', 'step3', 'result-step')">Next</button>
+            </div>
+        </div>
+
+        <div id="result-step" class="step hidden">
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        let userData = {};
+
+        function selectOption(field, value, currentStep, nextStep) {
+            userData[field] = value;
+            nextStepTransition(currentStep, nextStep);
+        }
+
+        function selectCustom(field, inputId, currentStep, nextStep) {
+            const value = document.getElementById(inputId).value;
+            if (value) {
+                userData[field] = Number(value);
+                nextStepTransition(currentStep, nextStep);
+            }
+        }
+
+        function nextStepTransition(currentStep, nextStep) {
+            document.getElementById(currentStep).classList.add('hidden');
+            document.getElementById(nextStep).classList.remove('hidden');
+            if (nextStep === 'result-step') {
+                calculateYears();
+            }
+        }
+
+        function calculateYears() {
+            const { income, savings, emi } = userData;
+
+            if (income && savings && emi) {
+                const surplus = savings - emi;
+                let years = 0;
+
+                if (surplus > 0) {
+                    const totalAmount = emi * 12;
+                    years = totalAmount / surplus;
+                    years = years.toFixed(2);
+                } else {
+                    years = "not possible with the current savings.";
+                }
+
+                document.getElementById("result").innerHTML = `It will take approximately <strong>${years}</strong> years to cover the car EMI.`;
+            } else {
+                document.getElementById("result").innerHTML = "Please fill out all the fields.";
+            }
+        }
+    </script>
+</body>
